@@ -1,161 +1,42 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using LeveMv.Data.Context;
+﻿using LeveMv.Application.Services;
+using LeveMv.Application.ViewModels;
 using LeveMv.Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LeveMvApi.Controllers
 {
-
-
-    public class LeveMvController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class LeveMvController : ControllerBase
     {
-        private readonly LeveMvContext _context;
+        private readonly LeveMvService _leveMvService;
 
-        public LeveMvController(LeveMvContext context)
+        public LeveMvController(LeveMvService leveMvService)
         {
-            _context = context;
+            _leveMvService = leveMvService;
         }
 
-        // GET: LeveMv
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        [Route("listar")]
+        public async Task<List<LeMv>> Listar()
         {
-              return _context.LeveMvs != null ? 
-                          View(await _context.LeveMvs.ToListAsync()) :
-                          Problem("Entity set 'LeveMvContext.LeveMvs'  is null.");
+            return await _leveMvService.Listar();
         }
 
-        // GET: LeveMv/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null || _context.LeveMvs == null)
-            {
-                return NotFound();
-            }
-
-            var leMv = await _context.LeveMvs
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (leMv == null)
-            {
-                return NotFound();
-            }
-
-            return View(leMv);
-        }
-
-        // GET: LeveMv/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: LeveMv/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Nome")] LeMv leMv)
+        [Route("cadastrar")]
+        public async Task<string> Cadastra([FromBody] leveMvDto leveMv)
         {
-            if (ModelState.IsValid)
-            {
-                leMv.ID = Guid.NewGuid();
-                _context.Add(leMv);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(leMv);
+            var entidade = leveMv.ConverterParaEntidade();
+            await _leveMvService.Cadastar(entidade);
+            return "Cadastro efetuado com sucesso!";
         }
 
-        // GET: LeveMv/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        [HttpGet]
+        [Route("listar-cliente")]
+        public async Task<List<LeMv>> ListarPorCliente()
         {
-            if (id == null || _context.LeveMvs == null)
-            {
-                return NotFound();
-            }
-
-            var leMv = await _context.LeveMvs.FindAsync(id);
-            if (leMv == null)
-            {
-                return NotFound();
-            }
-            return View(leMv);
-        }
-
-        // POST: LeveMv/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ID,Nome")] LeMv leMv)
-        {
-            if (id != leMv.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(leMv);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LeMvExists(leMv.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(leMv);
-        }
-
-        // GET: LeveMv/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null || _context.LeveMvs == null)
-            {
-                return NotFound();
-            }
-
-            var leMv = await _context.LeveMvs
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (leMv == null)
-            {
-                return NotFound();
-            }
-
-            return View(leMv);
-        }
-
-        // POST: LeveMv/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            if (_context.LeveMvs == null)
-            {
-                return Problem("Entity set 'LeveMvContext.LeveMvs'  is null.");
-            }
-            var leMv = await _context.LeveMvs.FindAsync(id);
-            if (leMv != null)
-            {
-                _context.LeveMvs.Remove(leMv);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool LeMvExists(Guid id)
-        {
-          return (_context.LeveMvs?.Any(e => e.ID == id)).GetValueOrDefault();
+            return await _leveMvService.ListarPorCliente();
         }
     }
 }

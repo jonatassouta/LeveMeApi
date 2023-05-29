@@ -7,7 +7,6 @@ namespace LeveMv.Data.Context
 {
     public class LeveMvContext : DbContext
     {
-        public LeveMvContext() { }
         public LeveMvContext(DbContextOptions<LeveMvContext> options) : base(options)
         {
         }
@@ -18,10 +17,10 @@ namespace LeveMv.Data.Context
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-VC8DKBE\\SQLEXPRESS;Database=LeveMvDB;Trusted_Connection=True;MultipleActiveResultSets=True;Encrypt=False;");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=DESKTOP-VC8DKBE\\SQLEXPRESS;Database=LeveMvDB;Trusted_Connection=True;MultipleActiveResultSets=True;Encrypt=False;");
+        //}
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produto> Produtos { get; set; }

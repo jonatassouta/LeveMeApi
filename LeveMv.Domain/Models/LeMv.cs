@@ -1,13 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace LeveMv.Domain.Models
+﻿namespace LeveMv.Domain.Models
 {
     public class LeMv
     {
         public Guid ID { get; set; }
         public string Nome { get; set; }
-        public Cliente Clientes { get; set; }
+        public IList<Cliente> Clientes { get; set; }
 
         public LeMv()
         { 
