@@ -18,7 +18,7 @@ namespace LeveMvApi.Controllers
 
         [HttpGet]
         [Route("listar")]
-        public async Task<List<LeMv>> Listar()
+        public async Task<List<LeveMe>> Listar()
         {
             return await _leveMvService.Listar();
         }
@@ -34,7 +34,7 @@ namespace LeveMvApi.Controllers
 
         [HttpGet]
         [Route("listar-cliente")]
-        public async Task<List<LeMv>> ListarPorCliente()
+        public async Task<List<LeveMe>> ListarPorCliente()
         {
             return await _leveMvService.ListarPorCliente();
         }

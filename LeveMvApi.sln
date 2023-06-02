@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33717.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeveMvApi", "LeveMvApi\LeveMvApi.csproj", "{DFA6796B-88A6-4861-8A70-689760EA6BEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeveMeApi", "LeveMvApi\LeveMeApi.csproj", "{DFA6796B-88A6-4861-8A70-689760EA6BEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Web", "1-Web", "{243D677C-0335-4C84-B2E7-5DA2D30DA904}"
 EndProject
@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{DA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infra", "4-Infra", "{B89AC12B-D3B4-4E80-A2FB-52AC95578092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeveMv.Application", "LeveMv.Application\LeveMv.Application.csproj", "{7F16F82D-EDEE-4888-970E-AD31D7EB5F47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeveMe.Application", "LeveMv.Application\LeveMe.Application.csproj", "{7F16F82D-EDEE-4888-970E-AD31D7EB5F47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeveMv.Domain", "LeveMv.Domain\LeveMv.Domain.csproj", "{319F4679-72A4-422C-8775-E441D8594CC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeveMe.Domain", "LeveMv.Domain\LeveMe.Domain.csproj", "{319F4679-72A4-422C-8775-E441D8594CC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeveMv.Data", "LeveMv.Infra\LeveMv.Data.csproj", "{48D54417-EE97-4661-8485-8BD8E132AF3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeveMe.Data", "LeveMv.Infra\LeveMe.Data.csproj", "{48D54417-EE97-4661-8485-8BD8E132AF3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1-Data", "4.1-Data", "{CFB7D53B-F710-4E0A-BEF1-962CC41FA74B}"
 EndProject

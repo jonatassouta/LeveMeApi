@@ -12,7 +12,7 @@ namespace LeveMv.Domain.Models
         public string UF { get; set; }
         public DateTime DataCadastro { get; set; }
         public Guid LeveMvID { get; set; }
-        public LeMv LeveMv { get; set; }
+        public IList<ClienteLME> LeveMv { get; set; }
 
         public Cliente()
         {

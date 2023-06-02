@@ -14,7 +14,7 @@ namespace LeveMv.Data.Repositories
             _context = context;
         }
 
-        public async Task Atualizar(LeMv leveMv)
+        public async Task Atualizar(LeveMe leveMv)
         {
             var atualizado = await Pesquisar(leveMv.ID);
             if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(leveMv.ID))
@@ -25,7 +25,7 @@ namespace LeveMv.Data.Repositories
             }
         }
 
-        public async Task Cadastar(LeMv leveMv)
+        public async Task Cadastar(LeveMe leveMv)
         {
             await _context.LeveMvs.AddAsync(leveMv);
             await _context.SaveChangesAsync();
@@ -38,12 +38,12 @@ namespace LeveMv.Data.Repositories
                 await _context.LeveMvs.ExecuteDeleteAsync();
         }
 
-        public async Task<List<LeMv>> Listar()
+        public async Task<List<LeveMe>> Listar()
         {
             return await _context.LeveMvs.ToListAsync();
         }
 
-        public async Task<List<LeMv>> ListarPorCliente()
+        public async Task<List<LeveMe>> ListarPorCliente()
         {
             var result = await _context.LeveMvs
                 .Include(c => c.Clientes)
@@ -52,7 +52,7 @@ namespace LeveMv.Data.Repositories
             return result;
         }
 
-        public async Task<LeMv> Pesquisar(Guid leveMvId)
+        public async Task<LeveMe> Pesquisar(Guid leveMvId)
         {
             return await _context.LeveMvs.FirstOrDefaultAsync(x => x.ID.Equals(leveMvId));
         }

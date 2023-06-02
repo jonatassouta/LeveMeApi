@@ -1,16 +1,16 @@
 ﻿namespace LeveMv.Domain.Models
 {
-    public class LeMv
+    public class LeveMe
     {
         public Guid ID { get; set; }
         public string Nome { get; set; }
-        public IList<Cliente> Clientes { get; set; }
+        public IList<ClienteLME> Clientes { get; set; }
 
-        public LeMv()
+        public LeveMe()
         { 
         
         }
-        public LeMv(Guid id, string nome)
+        public LeveMe(Guid id, string nome)
         {
             ID = id;
             Nome = nome;

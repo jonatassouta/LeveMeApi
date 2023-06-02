@@ -24,6 +24,6 @@ namespace LeveMv.Data.Context
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<LeMv> LeveMvs { get; set; }
+        public DbSet<LeveMe> LeveMvs { get; set; }
     }
 }
