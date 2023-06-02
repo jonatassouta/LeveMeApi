@@ -9,9 +9,9 @@ namespace LeveMvApi.Controllers
     [Route("api/[controller]")]
     public class LeveMvController : ControllerBase
     {
-        private readonly LeveMvService _leveMvService;
+        private readonly LeveMeService _leveMvService;
 
-        public LeveMvController(LeveMvService leveMvService)
+        public LeveMvController(LeveMeService leveMvService)
         {
             _leveMvService = leveMvService;
         }
@@ -25,7 +25,7 @@ namespace LeveMvApi.Controllers
 
         [HttpPost]
         [Route("cadastrar")]
-        public async Task<string> Cadastra([FromBody] leveMvDto leveMv)
+        public async Task<string> Cadastra([FromBody] leveMeDto leveMv)
         {
             var entidade = leveMv.ConverterParaEntidade();
             await _leveMvService.Cadastar(entidade);

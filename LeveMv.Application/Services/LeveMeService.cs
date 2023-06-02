@@ -4,11 +4,11 @@ using LeveMv.Domain.Models;
 
 namespace LeveMv.Application.Services
 {
-    public class LeveMvService : ILeveMvService
+    public class LeveMeService : ILeveMeService
     {
-        private readonly ILeveMvRepository _iLeveMvRepositories;
+        private readonly ILeveMeRepository _iLeveMvRepositories;
 
-        public LeveMvService(ILeveMvRepository iLeveMvRepositories)
+        public LeveMeService(ILeveMeRepository iLeveMvRepositories)
         {
             _iLeveMvRepositories = iLeveMvRepositories;
         }

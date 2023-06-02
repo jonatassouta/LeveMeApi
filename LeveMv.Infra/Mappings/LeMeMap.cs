@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LeveMv.Data.Mappings
 {
-    public class LeMvMap : IEntityTypeConfiguration<LeveMe>
+    public class LeMeMap : IEntityTypeConfiguration<LeveMe>
     {
         public void Configure(EntityTypeBuilder<LeveMe> builder)
         {

@@ -10,14 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<LeveMvContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
+builder.Services.AddDbContext<LeveMeContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 builder.Services.AddControllers();
 
 //Dependencia Repository
-builder.Services.AddScoped<ILeveMvRepository, LeveMvRepository>();
+builder.Services.AddScoped<ILeveMeRepository, LeveMeRepository>();
 
 //Dependencia Services
-builder.Services.AddScoped<ILeveMvService, LeveMvService>();
+builder.Services.AddScoped<ILeveMeService, LeveMeService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

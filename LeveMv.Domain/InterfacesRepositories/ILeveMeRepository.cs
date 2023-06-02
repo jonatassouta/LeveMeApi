@@ -2,7 +2,7 @@
 
 namespace LeveMv.Domain.InterfacesRepositories
 {
-    public interface ILeveMvRepository
+    public interface ILeveMeRepository
     {
         Task Cadastar(LeveMe leveMv);
         Task Atualizar(LeveMe leveMv);

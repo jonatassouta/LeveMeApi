@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace LeveMv.Application.ViewModels
 {
-    public class leveMvDto
+    public class leveMeDto
     {
         public Guid ID { get; set; }
         public string Nome { get; set; }
 
-       public leveMvDto()
+       public leveMeDto()
         {
 
         }

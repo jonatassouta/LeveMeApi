@@ -2,7 +2,7 @@
 
 namespace LeveMv.Application.InterfacesServices
 {
-    public interface ILeveMvService
+    public interface ILeveMeService
     {
         Task Cadastar(LeveMe leveMv);
         Task Atualizar(LeveMe leveMv);

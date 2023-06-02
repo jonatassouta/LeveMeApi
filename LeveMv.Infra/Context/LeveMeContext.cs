@@ -5,9 +5,9 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LeveMv.Data.Context
 {
-    public class LeveMvContext : DbContext
+    public class LeveMeContext : DbContext
     {
-        public LeveMvContext(DbContextOptions<LeveMvContext> options) : base(options)
+        public LeveMeContext(DbContextOptions<LeveMeContext> options) : base(options)
         {
         }
 

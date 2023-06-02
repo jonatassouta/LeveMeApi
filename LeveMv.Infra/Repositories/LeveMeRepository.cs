@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LeveMv.Data.Repositories
 {
-    public class LeveMvRepository : ILeveMvRepository
+    public class LeveMeRepository : ILeveMeRepository
     {
-        private readonly LeveMvContext _context;
+        private readonly LeveMeContext _context;
 
-        public LeveMvRepository(LeveMvContext context) 
+        public LeveMeRepository(LeveMeContext context) 
         {
             _context = context;
         }
