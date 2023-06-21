@@ -11,15 +11,15 @@ namespace LeveMv.Domain.Models
         public string Cidade { get; set; }
         public string UF { get; set; }
         public DateTime DataCadastro { get; set; }
-        public Guid LeveMvID { get; set; }
-        public IList<ClienteLME> LeveMv { get; set; }
+        public bool Ativo { get; set; }          
+        public IList<ClienteLeveMe> LeveMe { get; set; }
 
         public Cliente()
         {
 
         }
 
-        public Cliente(Guid id, string nome, string telefone, string endereco, string cidade, string uf, Guid leveMvId)
+        public Cliente(Guid id, string nome, string telefone, string endereco, string cidade, string uf, DateTime dataCadastro, bool ativo)
         { 
             ID = id;
             Nome = nome;
@@ -27,7 +27,8 @@ namespace LeveMv.Domain.Models
             Endereço = endereco;
             Cidade = cidade;
             UF = uf;
-            LeveMvID = leveMvId;
+            DataCadastro = dataCadastro;
+            Ativo = ativo;
         }
     }
 }

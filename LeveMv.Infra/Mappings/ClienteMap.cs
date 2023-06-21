@@ -40,9 +40,9 @@ namespace LeveMv.Data.Mappings
                 .HasColumnType("datetime")
                 .IsRequired();
 
-            builder.HasOne(p => p.LeveMv)
-                .WithMany()
-                .HasForeignKey(p => p.LeveMvID);
+            builder.Property(p => p.Ativo)
+                .HasColumnType("bit")
+                .IsRequired();
         }
     }
 }

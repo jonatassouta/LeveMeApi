@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace LeveMv.Domain.Models
 {
-    public class ClienteLME
+    public class ClienteLeveMe
     {
         public Guid ClienteId { get; set; }
         public Guid LeveMeId { get; set; }
 
-        public LeveMe LeveMe { get; set; }
+        public Leveme LeveMe { get; set; }
         public Cliente Cliente { get; set; }
     }
 }

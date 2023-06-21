@@ -18,9 +18,9 @@ namespace LeveMv.Application.ViewModels
 
         }
 
-        public LeveMe ConverterParaEntidade()
+        public Leveme ConverterParaEntidade()
         {
-            var novoLeve = new LeveMe();
+            var novoLeve = new Leveme();
             novoLeve.ID = !string.IsNullOrEmpty(this.ID.ToString()) ? this.ID : BaseEntity.GenerateId();
             novoLeve.Nome = this.Nome;
 

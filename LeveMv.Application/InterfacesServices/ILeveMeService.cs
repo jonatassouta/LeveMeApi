@@ -4,11 +4,11 @@ namespace LeveMv.Application.InterfacesServices
 {
     public interface ILeveMeService
     {
-        Task Cadastar(LeveMe leveMv);
-        Task Atualizar(LeveMe leveMv);
-        Task<List<LeveMe>> Listar();
-        Task<List<LeveMe>> ListarPorCliente();
+        Task Cadastar(Leveme leveMv);
+        Task Atualizar(Leveme leveMv);
+        Task<List<Leveme>> Listar();
+        Task<List<Leveme>> ListarPorCliente();
         Task Excluir(Guid leveMvId);
-        Task<LeveMe> Pesquisar(Guid leveMvId);
+        Task<Leveme> Pesquisar(Guid leveMvId);
     }
 }

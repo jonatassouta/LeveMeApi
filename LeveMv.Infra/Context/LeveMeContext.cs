@@ -1,7 +1,6 @@
 ﻿using LeveMv.Data.Mappings;
 using LeveMv.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LeveMv.Data.Context
 {
@@ -14,6 +13,7 @@ namespace LeveMv.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProdutoMap).Assembly);
+            InitializeData(modelBuilder);
 
         }
 
@@ -24,6 +24,19 @@ namespace LeveMv.Data.Context
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<LeveMe> LeveMvs { get; set; }
+        public DbSet<Leveme> LeveMes { get; set; }
+        public DbSet<ClienteLeveMe> ClientesLMEs { get; set; }
+
+        protected void InitializeData(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cliente>().HasData(
+                new Cliente { ID = new Guid("6714d050-cbad-4951-b819-3641e4647f1c") , Nome = "Jonatas", Telefone = "16999998888", Endereço = "Av. Teste", Cidade = "Araraquaa", UF = "SP", DataCadastro = DateTime.Parse("16/05/2025"), Ativo = true });
+
+            modelBuilder.Entity<Leveme>().HasData(
+                new Leveme { ID = new Guid("fa974954-c32d-4e62-9154-c77d14445525"), Nome = "Leve Me Tipo 1" });
+
+            modelBuilder.Entity<ClienteLeveMe>().HasData(
+                new ClienteLeveMe { ClienteId = new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), LeveMeId = new Guid("fa974954-c32d-4e62-9154-c77d14445525")});
+        }
     }
 }

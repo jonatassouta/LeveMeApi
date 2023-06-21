@@ -14,20 +14,20 @@ namespace LeveMv.Data.Repositories
             _context = context;
         }
 
-        public async Task Atualizar(LeveMe leveMv)
+        public async Task Atualizar(Leveme leveMv)
         {
             var atualizado = await Pesquisar(leveMv.ID);
             if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(leveMv.ID))
             {
                 atualizado.Nome = leveMv.Nome;
 
-                _context.LeveMvs.Update(atualizado);
+                _context.LeveMes.Update(atualizado);
             }
         }
 
-        public async Task Cadastar(LeveMe leveMv)
+        public async Task Cadastar(Leveme leveMv)
         {
-            await _context.LeveMvs.AddAsync(leveMv);
+            await _context.LeveMes.AddAsync(leveMv);
             await _context.SaveChangesAsync();
         }
 
@@ -35,26 +35,26 @@ namespace LeveMv.Data.Repositories
         {
             var leveMv = await Pesquisar(leveMvId);
             if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(leveMvId))
-                await _context.LeveMvs.ExecuteDeleteAsync();
+                await _context.LeveMes.ExecuteDeleteAsync();
         }
 
-        public async Task<List<LeveMe>> Listar()
+        public async Task<List<Leveme>> Listar()
         {
-            return await _context.LeveMvs.ToListAsync();
+            return await _context.LeveMes.ToListAsync();
         }
 
-        public async Task<List<LeveMe>> ListarPorCliente()
+        public async Task<List<Leveme>> ListarPorCliente()
         {
-            var result = await _context.LeveMvs
+            var result = await _context.LeveMes
                 .Include(c => c.Clientes)
                 .ToListAsync();
 
             return result;
         }
 
-        public async Task<LeveMe> Pesquisar(Guid leveMvId)
+        public async Task<Leveme> Pesquisar(Guid leveMvId)
         {
-            return await _context.LeveMvs.FirstOrDefaultAsync(x => x.ID.Equals(leveMvId));
+            return await _context.LeveMes.FirstOrDefaultAsync(x => x.ID.Equals(leveMvId));
         }
     }
 }
