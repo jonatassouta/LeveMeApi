@@ -39,5 +39,30 @@ namespace LeveMvApi.Controllers
         {
             return await _leveMvService.ListarPorCliente();
         }
+
+        [HttpGet]
+        [Route("pesquisar/{id}")]
+        public async Task<Leveme> Pesquisar(Guid id)
+        {
+            return await _leveMvService.Pesquisar(id);
+        }
+
+        [HttpPut]
+        [Route("atualizar")]
+        public async Task<string> Atualizar ([FromBody] leveMeDto leveMe)
+        {
+            var entidade = leveMe.ConverterParaEntidade();
+            await _leveMvService.Atualizar(entidade);
+            return "Atualizado com sucesso!";
+        }
+
+
+        [HttpDelete]
+        [Route("deletar/{id}")]
+        public async Task<string> Deletar(Guid idLeveMe)
+        {
+            await _leveMvService.Excluir(idLeveMe);
+            return "Exclusão efetuada com sucesso!";
+        }
     }
 }

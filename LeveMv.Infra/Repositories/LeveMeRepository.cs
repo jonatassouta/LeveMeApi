@@ -2,6 +2,7 @@
 using LeveMv.Domain.InterfacesRepositories;
 using LeveMv.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.InteropServices;
 
 namespace LeveMv.Data.Repositories
 {
@@ -22,6 +23,7 @@ namespace LeveMv.Data.Repositories
                 atualizado.Nome = leveMv.Nome;
 
                 _context.LeveMes.Update(atualizado);
+                await _context.SaveChangesAsync();
             }
         }
 
@@ -35,7 +37,10 @@ namespace LeveMv.Data.Repositories
         {
             var leveMv = await Pesquisar(leveMvId);
             if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(leveMvId))
-                await _context.LeveMes.ExecuteDeleteAsync();
+            {
+                _context.LeveMes.Remove(leveMv);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<Leveme>> Listar()
