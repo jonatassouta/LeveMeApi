@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using LeveMe.Domain.Models;
 
 namespace LeveMv.Domain.Models
 {
@@ -8,6 +7,7 @@ namespace LeveMv.Domain.Models
         public Guid ID { get; set; }
         public string Nome { get; set; }
         public decimal Preco { get; set; }
+        public IList<ProdutoCliente> Clientes { get; set; }
 
         public Produto() 
         { 

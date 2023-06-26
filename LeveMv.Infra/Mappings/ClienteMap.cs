@@ -16,27 +16,39 @@ namespace LeveMv.Data.Mappings
                 .HasColumnType("varchar(100)")
                 .IsRequired();
 
-            builder.Property(p => p.Endereço)
-                .HasColumnType("varchar(100)");
+            builder.Property(p => p.CNPJ)
+                .HasColumnType("int(14)")
+                .IsRequired();
 
-            builder.Property(p => p.Telefone)
-                .HasColumnType("varchar(20)")
+            builder.Property(p => p.Endereço)
+                .HasColumnType("varchar(100)")
+                .IsRequired();
+
+            builder.Property(p => p.Bairro)
+                .HasColumnType("20")
                 .IsRequired();
 
             builder.Property(p => p.Cidade)
                 .HasColumnType("varchar(20)")
                 .IsRequired();
 
+            builder.Property(p => p.Telefone)
+                .HasColumnType("varchar(12)")
+                .IsRequired();
+
             builder.Property(p => p.UF)
                 .HasColumnType("varchar(2)")
                 .IsRequired();
 
-            builder.Property(p => p.DataCadastro)
-                .HasColumnType("datetime")
-                .IsRequired();
+            builder.Property(p => p.Email)
+                .HasColumnType("varchar(40)");          
 
             builder.Property(p => p.Ativo)
                 .HasColumnType("bit")
+                .IsRequired();
+
+            builder.Property(p => p.DataCadastro)
+                .HasColumnType("datetime")
                 .IsRequired();
         }
     }

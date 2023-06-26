@@ -52,7 +52,16 @@ namespace LeveMv.Data.Repositories
         {
             var result = await _context.LeveMes
                 .Include(c => c.Clientes)
+                .ThenInclude(cc => cc.LeveMe)
                 .ToListAsync();
+
+            foreach (var item in result)
+            {
+                foreach (var subitem in item.Clientes)
+                {
+                    subitem.Cliente = _context.Clientes.FirstOrDefault(c => c.ID.Equals(subitem.ClienteId));
+                }
+            }
 
             return result;
         }
