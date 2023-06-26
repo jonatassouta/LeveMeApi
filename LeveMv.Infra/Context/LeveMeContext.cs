@@ -33,7 +33,7 @@ namespace LeveMv.Data.Context
                 new Cliente { ID = new Guid("6714d050-cbad-4951-b819-3641e4647f1c") , Nome = "Jonatas", Telefone = "16999998888", Endereço = "Av. Teste", Cidade = "Araraquaa", UF = "SP", DataCadastro = DateTime.Parse("16/05/2025"), Ativo = true });
 
             modelBuilder.Entity<Leveme>().HasData(
-                new Leveme { ID = new Guid("fa974954-c32d-4e62-9154-c77d14445525"), Nome = "Leve Me Tipo 1" });
+                new Leveme { ID = new Guid("fa974954-c32d-4e62-9154-c77d14445525"), Nome = "Leve Me Tipo 1"});
 
             modelBuilder.Entity<ClienteLeveMe>().HasData(
                 new ClienteLeveMe { ClienteId = new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), LeveMeId = new Guid("fa974954-c32d-4e62-9154-c77d14445525")});

@@ -59,9 +59,9 @@ namespace LeveMvApi.Controllers
 
         [HttpDelete]
         [Route("deletar/{id}")]
-        public async Task<string> Deletar(Guid idLeveMe)
+        public async Task<string> Deletar(Guid id)
         {
-            await _leveMvService.Excluir(idLeveMe);
+            await _leveMvService.Excluir(id);
             return "Exclusão efetuada com sucesso!";
         }
     }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeveMe.Data.Migrations
 {
     [DbContext(typeof(LeveMeContext))]
-    [Migration("20230621015417_InsertdeDados")]
-    partial class InsertdeDados
+    [Migration("20230626030728_CriacaoBanco")]
+    partial class CriacaoBanco
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

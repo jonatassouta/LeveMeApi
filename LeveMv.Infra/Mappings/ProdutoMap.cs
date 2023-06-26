@@ -10,6 +10,8 @@ namespace LeveMv.Data.Mappings
         {
             builder.ToTable("Produtos");
 
+            builder.HasKey(p => p.ID);
+
             builder.Property(p => p.Nome)
                 .HasColumnType("varchar(100)")
                 .IsRequired();

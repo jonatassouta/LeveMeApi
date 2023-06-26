@@ -1,3 +1,7 @@
+using LeveMe.Application.InterfacesServices;
+using LeveMe.Application.Services;
+using LeveMe.Data.Repositories;
+using LeveMe.Domain.InterfacesRepositories;
 using LeveMv.Application.InterfacesServices;
 using LeveMv.Application.Services;
 using LeveMv.Data.Context;
@@ -16,9 +20,11 @@ builder.Services.AddControllers()
 
 //Dependencia Repository
 builder.Services.AddScoped<ILeveMeRepository, LeveMeRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
 //Dependencia Services
 builder.Services.AddScoped<ILeveMeService, LeveMeService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

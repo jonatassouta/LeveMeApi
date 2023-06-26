@@ -22,7 +22,6 @@ namespace LeveMe.Data.Migrations
                     Cidade = table.Column<string>(type: "varchar(20)", nullable: false),
                     UF = table.Column<string>(type: "varchar(2)", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime", nullable: false),
-                    LeveMvID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -78,6 +77,21 @@ namespace LeveMe.Data.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Clientes",
+                columns: new[] { "ID", "Ativo", "Cidade", "DataCadastro", "Endereço", "Nome", "Telefone", "UF" },
+                values: new object[] { new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), true, "Araraquaa", new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "Av. Teste", "Jonatas", "16999998888", "SP" });
+
+            migrationBuilder.InsertData(
+                table: "LeveMe",
+                columns: new[] { "ID", "Nome" },
+                values: new object[] { new Guid("fa974954-c32d-4e62-9154-c77d14445525"), "Leve Me Tipo 1" });
+
+            migrationBuilder.InsertData(
+                table: "ClientesleveMe",
+                columns: new[] { "ClienteId", "LeveMeId" },
+                values: new object[] { new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), new Guid("fa974954-c32d-4e62-9154-c77d14445525") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientesleveMe_LeveMeId",
