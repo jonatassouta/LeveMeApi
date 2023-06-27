@@ -17,7 +17,7 @@ namespace LeveMv.Data.Mappings
                 .IsRequired();
 
             builder.Property(p => p.CNPJ)
-                .HasColumnType("int(14)")
+                .HasColumnType("numeric(14,0)")
                 .IsRequired();
 
             builder.Property(p => p.Endereço)
@@ -25,7 +25,7 @@ namespace LeveMv.Data.Mappings
                 .IsRequired();
 
             builder.Property(p => p.Bairro)
-                .HasColumnType("20")
+                .HasColumnType("varchar(20)")
                 .IsRequired();
 
             builder.Property(p => p.Cidade)

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeveMe.Data.Migrations
 {
     [DbContext(typeof(LeveMeContext))]
-    [Migration("20230626030728_CriacaoBanco")]
-    partial class CriacaoBanco
+    [Migration("20230627021817_AddIsRequiredInProdutos")]
+    partial class AddIsRequiredInProdutos
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,12 +34,22 @@ namespace LeveMe.Data.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<decimal>("CNPJ")
+                        .HasColumnType("numeric(14,0)");
+
                     b.Property<string>("Cidade")
                         .IsRequired()
                         .HasColumnType("varchar(20)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("varchar(40)");
 
                     b.Property<string>("Endereço")
                         .IsRequired()
@@ -51,7 +61,7 @@ namespace LeveMe.Data.Migrations
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(12)");
 
                     b.Property<string>("UF")
                         .IsRequired()
@@ -66,7 +76,9 @@ namespace LeveMe.Data.Migrations
                         {
                             ID = new Guid("6714d050-cbad-4951-b819-3641e4647f1c"),
                             Ativo = true,
-                            Cidade = "Araraquaa",
+                            Bairro = "Vila Xavier",
+                            CNPJ = 11122233345678m,
+                            Cidade = "Araraquara",
                             DataCadastro = new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Endereço = "Av. Teste",
                             Nome = "Jonatas",
@@ -125,6 +137,9 @@ namespace LeveMe.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("ClienteId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
@@ -132,9 +147,24 @@ namespace LeveMe.Data.Migrations
                     b.Property<decimal>("Preco")
                         .HasColumnType("numeric(38,2)");
 
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
+                    b.HasIndex("ClienteId");
+
                     b.ToTable("Produtos", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ID = new Guid("afc849df-735d-48ec-8e20-61aa2e434cff"),
+                            ClienteId = new Guid("6714d050-cbad-4951-b819-3641e4647f1c"),
+                            Nome = "Cabo Tipo C",
+                            Preco = 22.5m,
+                            Quantidade = 0
+                        });
                 });
 
             modelBuilder.Entity("LeveMv.Domain.Models.ClienteLeveMe", b =>
@@ -156,9 +186,22 @@ namespace LeveMe.Data.Migrations
                     b.Navigation("LeveMe");
                 });
 
+            modelBuilder.Entity("LeveMv.Domain.Models.Produto", b =>
+                {
+                    b.HasOne("LeveMv.Domain.Models.Cliente", "Cliente")
+                        .WithMany("Produtos")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+                });
+
             modelBuilder.Entity("LeveMv.Domain.Models.Cliente", b =>
                 {
                     b.Navigation("LeveMe");
+
+                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("LeveMv.Domain.Models.Leveme", b =>

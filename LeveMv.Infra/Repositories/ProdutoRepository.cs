@@ -21,6 +21,7 @@ namespace LeveMe.Data.Repositories
             {
                 atualizado.Nome = produto.Nome;
                 atualizado.Preco = produto.Preco;
+                atualizado.Quantidade = produto.Quantidade;
 
                 _context.Produtos.Update(atualizado);
                 await _context.SaveChangesAsync();
@@ -50,7 +51,12 @@ namespace LeveMe.Data.Repositories
 
         public async Task<List<Produto>> ListarPorCliente()
         {
-            throw new NotImplementedException();
+            var result = await _context.Produtos
+                .Include(c => c.Cliente)
+                .ThenInclude(cc => cc.Produtos)
+                .ToListAsync();
+
+            return result;
         }
 
         public async Task<Produto> PesquisarPoId(Guid produtoId)

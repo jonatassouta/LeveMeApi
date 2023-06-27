@@ -17,7 +17,12 @@ namespace LeveMv.Data.Mappings
                 .IsRequired();
 
             builder.Property(p => p.Preco)
-                .HasColumnType("numeric(38,2)");
+                .HasColumnType("numeric(38,2)")
+                .IsRequired();
+
+            builder.Property(p => p.Quantidade)
+                .HasColumnType("int")
+                .IsRequired();
         }
     }
 }
