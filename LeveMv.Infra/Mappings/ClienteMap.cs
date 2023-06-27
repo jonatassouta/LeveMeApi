@@ -18,6 +18,7 @@ namespace LeveMv.Data.Mappings
 
             builder.Property(p => p.CNPJ)
                 .HasColumnType("numeric(14,0)")
+                .HasPrecision(14,0)
                 .IsRequired();
 
             builder.Property(p => p.Endereço)
@@ -38,6 +39,7 @@ namespace LeveMv.Data.Mappings
 
             builder.Property(p => p.UF)
                 .HasColumnType("varchar(2)")
+                .HasMaxLength(2)
                 .IsRequired();
 
             builder.Property(p => p.Email)
