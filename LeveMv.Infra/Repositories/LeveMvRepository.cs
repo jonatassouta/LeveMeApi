@@ -6,16 +6,16 @@ using System.Runtime.InteropServices;
 
 namespace LeveMv.Data.Repositories
 {
-    public class LeveMeRepository : ILeveMeRepository
+    public class LeveMvRepository : ILeveMeRepository
     {
         private readonly LeveMeContext _context;
 
-        public LeveMeRepository(LeveMeContext context) 
+        public LeveMvRepository(LeveMeContext context) 
         {
             _context = context;
         }
 
-        public async Task Atualizar(Leveme leveMv)
+        public async Task Atualizar(Domain.Models.Levemv leveMv)
         {
             var atualizado = await Pesquisar(leveMv.ID);
             if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(leveMv.ID))
@@ -27,32 +27,36 @@ namespace LeveMv.Data.Repositories
             }
         }
 
-        public async Task Cadastar(Leveme leveMv)
+        public async Task Cadastar(Domain.Models.Levemv leveMv)
         {
             await _context.LeveMes.AddAsync(leveMv);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Excluir(Guid leveMvId)
+        public async Task<string> Excluir(Guid leveMvId)
         {
             var leveMv = await Pesquisar(leveMvId);
             if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(leveMvId))
             {
                 _context.LeveMes.Remove(leveMv);
                 await _context.SaveChangesAsync();
+                return "Excluido com sucesso";
+            }else
+            {
+                return "Registro Não Encontrado!";
             }
         }
 
-        public async Task<List<Leveme>> Listar()
+        public async Task<List<Domain.Models.Levemv>> Listar()
         {
             return await _context.LeveMes.ToListAsync();
         }
 
-        public async Task<List<Leveme>> ListarPorCliente()
+        public async Task<List<Domain.Models.Levemv>> ListarPorCliente()
         {
             var result = await _context.LeveMes
                 .Include(c => c.Clientes)
-                .ThenInclude(cc => cc.LeveMe)
+                .ThenInclude(cc => cc.LeveMv)
                 .ToListAsync();
 
             foreach (var item in result)
@@ -66,7 +70,12 @@ namespace LeveMv.Data.Repositories
             return result;
         }
 
-        public async Task<Leveme> Pesquisar(Guid leveMvId)
+        public async Task<List<Domain.Models.Levemv>> ListarPorNome(string nome)
+        {
+            return await _context.LeveMes.Where(l => l.Nome.StartsWith(nome)).ToListAsync();
+        }
+
+        public async Task<Domain.Models.Levemv> Pesquisar(Guid leveMvId)
         {
             return await _context.LeveMes.FirstOrDefaultAsync(x => x.ID.Equals(leveMvId));
         }

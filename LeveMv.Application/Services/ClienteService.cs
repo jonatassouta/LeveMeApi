@@ -70,6 +70,19 @@ namespace LeveMe.Application.Services
             }
         }
 
+        public async Task<List<Cliente>> ListarPorNome(string nome)
+        {
+            try
+            {
+                return await _iClienteRepositories.ListarPorNome(nome);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task<Cliente> PesquisarPoId(Guid clienteId)
         {
             try

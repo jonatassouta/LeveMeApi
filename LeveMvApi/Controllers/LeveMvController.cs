@@ -8,18 +8,18 @@ namespace LeveMvApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class LeveMeController : ControllerBase
+    public class LeveMvController : ControllerBase
     {
         private readonly ILeveMeService _leveMvService;
 
-        public LeveMeController(ILeveMeService leveMvService)
+        public LeveMvController(ILeveMeService leveMvService)
         {
             _leveMvService = leveMvService;
         }
 
         [HttpGet]
         [Route("listar")]
-        public async Task<List<Leveme>> Listar()
+        public async Task<List<LeveMv.Domain.Models.Levemv>> Listar()
         {
             return await _leveMvService.Listar();
         }
@@ -35,17 +35,25 @@ namespace LeveMvApi.Controllers
 
         [HttpGet]
         [Route("listar-cliente")]
-        public async Task<List<Leveme>> ListarPorCliente()
+        public async Task<List<LeveMv.Domain.Models.Levemv>> ListarPorCliente()
         {
             return await _leveMvService.ListarPorCliente();
         }
 
         [HttpGet]
         [Route("pesquisar/{id}")]
-        public async Task<Leveme> Pesquisar(Guid id)
+        public async Task<LeveMv.Domain.Models.Levemv> Pesquisar(Guid id)
         {
             return await _leveMvService.Pesquisar(id);
         }
+
+        [HttpGet]
+        [Route("listar-por-nome/{nome}")]
+        public async Task<List<LeveMv.Domain.Models.Levemv>> ListarPorNome(string nome)
+        {
+            return await _leveMvService.ListarPorNome(nome);
+        }
+
 
         [HttpPut]
         [Route("atualizar")]
@@ -61,8 +69,16 @@ namespace LeveMvApi.Controllers
         [Route("deletar/{id}")]
         public async Task<string> Deletar(Guid id)
         {
-            await _leveMvService.Excluir(id);
-            return "Exclusão efetuada com sucesso!";
+            var leveMv = await Pesquisar(id);
+            if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(id))
+            {
+                await _leveMvService.Excluir(id);
+                return "Excluido com sucesso";
+            }
+            else
+            {
+                return "Registro não encontrado!";
+            }
         }
     }
 }

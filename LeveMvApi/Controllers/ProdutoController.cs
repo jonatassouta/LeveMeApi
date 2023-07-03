@@ -23,6 +23,13 @@ namespace LeveMeApi.Controllers
             return await _produtoService.Listar();
         }
 
+        [HttpGet]
+        [Route("listar-por-nome/{nome}")]
+        public async Task<List<Produto>> ListarPorNome(string nome)
+        {
+            return await _produtoService.ListarPorNome(nome);
+        }
+
         [HttpPost]
         [Route("cadastrar")]
         public async Task<string> Cadastrar([FromBody] ProdutoDto produto)

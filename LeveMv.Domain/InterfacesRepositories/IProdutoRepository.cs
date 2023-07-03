@@ -7,6 +7,7 @@ namespace LeveMe.Domain.InterfacesRepositories
         Task Cadastar(Produto produto);
         Task Atualizar(Produto produto);
         Task<List<Produto>> Listar();
+        Task<List<Produto>> ListarPorNome(string nome);
         Task<List<Produto>> ListarPorCliente();
         Task Excluir(Guid produtoId);
         Task<Produto> PesquisarPoId(Guid produtoId);

@@ -65,6 +65,19 @@ namespace LeveMe.Application.Services
             }
         }
 
+        public async Task<List<Produto>> ListarPorNome(string nome)
+        {
+            try
+            {
+                return await _iProdutoRepositories.ListarPorNome(nome);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task<List<Produto>> ListarPorCliente()
         {
             try

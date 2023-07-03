@@ -63,5 +63,10 @@ namespace LeveMe.Data.Repositories
         {
              return await _context.Produtos.FirstOrDefaultAsync(x => x.ID.Equals(produtoId));
         }
+
+        public async Task<List<Produto>> ListarPorNome(string nome)
+        {
+            return await _context.Produtos.Where(l => l.Nome.StartsWith(nome)).ToListAsync();
+        }
     }
 }

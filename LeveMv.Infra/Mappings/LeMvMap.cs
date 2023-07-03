@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LeveMv.Data.Mappings
 {
-    public class LeMeMap : IEntityTypeConfiguration<Leveme>
+    public class LeMvMap : IEntityTypeConfiguration<Domain.Models.Levemv>
     {
-        public void Configure(EntityTypeBuilder<Leveme> builder)
+        public void Configure(EntityTypeBuilder<Domain.Models.Levemv> builder)
         {
-            builder.ToTable("LeveMe");
+            builder.ToTable("LeveMv");
 
             builder.HasKey( p => p.ID);
 

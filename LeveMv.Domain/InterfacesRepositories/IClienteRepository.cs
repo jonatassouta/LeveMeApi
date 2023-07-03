@@ -12,6 +12,7 @@ namespace LeveMe.Domain.InterfacesRepositories
         Task Cadastar(Cliente cliente);
         Task Atualizar(Cliente cliente);
         Task<List<Cliente>> Listar();
+        Task<List<Cliente>> ListarPorNome(string nome);
         Task Excluir(Guid clienteId);
         Task<Cliente> PesquisarPoId(Guid clienteId);
     }

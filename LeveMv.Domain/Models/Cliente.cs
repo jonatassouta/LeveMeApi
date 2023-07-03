@@ -13,7 +13,7 @@
         public string? Email { get; set; }
         public bool Ativo { get; set; }          
         public DateTime DataCadastro { get; set; }
-        public IList<ClienteLeveMe> LeveMe { get; set; }
+        public IList<ClienteLeveMv> LeveMe { get; set; }
         public ICollection<Produto> Produtos { get; set; }
 
         public Cliente()

@@ -13,7 +13,7 @@ namespace LeveMv.Application.Services
             _iLeveMvRepositories = iLeveMvRepositories;
         }
 
-        public async Task Atualizar(Leveme leveMv)
+        public async Task Atualizar(Levemv leveMv)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace LeveMv.Application.Services
             }
         }
 
-        public async Task Cadastar(Leveme leveMv)
+        public async Task Cadastar(Domain.Models.Levemv leveMv)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace LeveMv.Application.Services
             }
         }
 
-        public async Task<List<Leveme>> Listar()
+        public async Task<List<Levemv>> Listar()
         {
             try
             {
@@ -65,7 +65,7 @@ namespace LeveMv.Application.Services
             }
         }
 
-        public async Task<List<Leveme>> ListarPorCliente()
+        public async Task<List<Levemv>> ListarPorCliente()
         {
             try
             {
@@ -78,7 +78,20 @@ namespace LeveMv.Application.Services
             }
         }
 
-        public async Task<Leveme> Pesquisar(Guid leveMvId)
+        public async Task<List<Domain.Models.Levemv>> ListarPorNome(string nome)
+        {
+            try
+            {
+                return await _iLeveMvRepositories.ListarPorNome(nome);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<Domain.Models.Levemv> Pesquisar(Guid leveMvId)
         {
             try
             {

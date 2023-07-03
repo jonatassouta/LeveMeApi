@@ -59,5 +59,10 @@ namespace LeveMe.Data.Repositories
         {
             return await _context.Clientes.FirstOrDefaultAsync(x => x.ID.Equals(clienteId));
         }
+
+        public async Task<List<Cliente>> ListarPorNome(string nome)
+        {
+            return await _context.Clientes.Where(l => l.Nome.StartsWith(nome)).ToListAsync();
+        }
     }
 }
