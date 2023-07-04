@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LeveMeApi.Controllers
 {
     [ApiController]
-    [Route("cliente/[controller]")]
+    [Route("api/[controller]")]
     public class ClienteController : ControllerBase
     {
         private readonly IClienteService _clienteService;

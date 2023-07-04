@@ -19,7 +19,7 @@ namespace LeveMvApi.Controllers
 
         [HttpGet]
         [Route("listar")]
-        public async Task<List<LeveMv.Domain.Models.Levemv>> Listar()
+        public async Task<List<Levemv>> Listar()
         {
             return await _leveMvService.Listar();
         }
