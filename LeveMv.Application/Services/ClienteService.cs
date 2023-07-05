@@ -31,11 +31,11 @@ namespace LeveMe.Application.Services
             }
         }
 
-        public async Task Cadastar(Cliente cliente)
+        public async Task<string> Cadastar(Cliente cliente)
         {
             try
             {
-                await _iClienteRepositories.Cadastar(cliente);
+                return await _iClienteRepositories.Cadastar(cliente);
             }
             catch (Exception ex)
             {

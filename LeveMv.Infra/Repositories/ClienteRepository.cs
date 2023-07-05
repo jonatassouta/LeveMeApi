@@ -20,7 +20,7 @@ namespace LeveMe.Data.Repositories
             {
                 atualizado.Nome = cliente.Nome;
                 atualizado.CNPJ = cliente.CNPJ;
-                atualizado.Endereço = cliente.Endereço;
+                atualizado.Endereco = cliente.Endereco;
                 atualizado.Bairro = cliente.Bairro;
                 atualizado.Cidade = cliente.Cidade;
                 atualizado.UF = cliente.UF;
@@ -33,11 +33,23 @@ namespace LeveMe.Data.Repositories
             }
         }
 
-        public async Task Cadastar(Cliente cliente)
+        public async Task<string> Cadastar(Cliente cliente)
         {
-            cliente.Ativo = true;
-            await _context.Clientes.AddAsync(cliente);
-            await _context.SaveChangesAsync();
+            if (cliente.LeveMvId == Guid.Empty)
+            {
+                return "Leve Mv ID é obrigatório!";
+            }
+            else
+            {
+                ClienteLeveMv clienteLeveMv = new ClienteLeveMv(cliente.LeveMvId, cliente.ID);
+                cliente.Ativo = true;
+
+                await _context.Clientes.AddAsync(cliente);
+                await _context.ClientesLMvs.AddAsync(clienteLeveMv);
+                await _context.SaveChangesAsync();
+
+                return "Cadastrado com sucesso!";
+            }
         }
 
         public async Task Excluir(Guid clienteId)

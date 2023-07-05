@@ -22,14 +22,14 @@ namespace LeveMv.Data.Repositories
             {
                 atualizado.Nome = leveMv.Nome;
 
-                _context.LeveMes.Update(atualizado);
+                _context.LeveMvs.Update(atualizado);
                 await _context.SaveChangesAsync();
             }
         }
 
         public async Task Cadastar(Domain.Models.Levemv leveMv)
         {
-            await _context.LeveMes.AddAsync(leveMv);
+            await _context.LeveMvs.AddAsync(leveMv);
             await _context.SaveChangesAsync();
         }
 
@@ -38,7 +38,7 @@ namespace LeveMv.Data.Repositories
             var leveMv = await Pesquisar(leveMvId);
             if (leveMv != null && !string.IsNullOrEmpty(leveMv.ID.ToString()) && leveMv.ID.Equals(leveMvId))
             {
-                _context.LeveMes.Remove(leveMv);
+                _context.LeveMvs.Remove(leveMv);
                 await _context.SaveChangesAsync();
                 return "Excluido com sucesso";
             }else
@@ -49,14 +49,13 @@ namespace LeveMv.Data.Repositories
 
         public async Task<List<Domain.Models.Levemv>> Listar()
         {
-            return await _context.LeveMes.ToListAsync();
+            return await _context.LeveMvs.ToListAsync();
         }
 
-        public async Task<List<Domain.Models.Levemv>> ListarPorCliente()
+        public async Task<List<Levemv>> ListarPorCliente()
         {
-            var result = await _context.LeveMes
+            var result = await _context.LeveMvs
                 .Include(c => c.Clientes)
-                .ThenInclude(cc => cc.LeveMv)
                 .ToListAsync();
 
             foreach (var item in result)
@@ -72,12 +71,12 @@ namespace LeveMv.Data.Repositories
 
         public async Task<List<Domain.Models.Levemv>> ListarPorNome(string nome)
         {
-            return await _context.LeveMes.Where(l => l.Nome.StartsWith(nome)).ToListAsync();
+            return await _context.LeveMvs.Where(l => l.Nome.StartsWith(nome)).ToListAsync();
         }
 
         public async Task<Domain.Models.Levemv> Pesquisar(Guid leveMvId)
         {
-            return await _context.LeveMes.FirstOrDefaultAsync(x => x.ID.Equals(leveMvId));
+            return await _context.LeveMvs.FirstOrDefaultAsync(x => x.ID.Equals(leveMvId));
         }
     }
 }

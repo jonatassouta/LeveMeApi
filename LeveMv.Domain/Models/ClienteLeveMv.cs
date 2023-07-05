@@ -13,5 +13,12 @@ namespace LeveMv.Domain.Models
 
         public Levemv LeveMv { get; set; }
         public Cliente Cliente { get; set; }
+
+        public ClienteLeveMv() { }
+        public ClienteLeveMv(Guid leveId, Guid clienteId)
+        {
+            ClienteId = clienteId;
+            LeveMvId = leveId;
+        }
     }
 }

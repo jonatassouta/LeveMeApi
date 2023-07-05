@@ -21,7 +21,7 @@ namespace LeveMv.Data.Mappings
                 .HasPrecision(14,0)
                 .IsRequired();
 
-            builder.Property(p => p.Endereço)
+            builder.Property(p => p.Endereco)
                 .HasColumnType("varchar(100)")
                 .IsRequired();
 
@@ -51,6 +51,9 @@ namespace LeveMv.Data.Mappings
 
             builder.Property(p => p.DataCadastro)
                 .HasColumnType("datetime")
+                .IsRequired();
+
+            builder.Property(p => p.LeveMvId)
                 .IsRequired();
         }
     }

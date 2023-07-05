@@ -4,6 +4,7 @@ using LeveMv.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeveMe.Data.Migrations
 {
     [DbContext(typeof(LeveMeContext))]
-    partial class LeveMeContextModelSnapshot : ModelSnapshot
+    [Migration("20230704151956_MudandoNomeColunaEnderecoCliente")]
+    partial class MudandoNomeColunaEnderecoCliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,9 +56,6 @@ namespace LeveMe.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<Guid>("LeveMvId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
@@ -83,7 +83,6 @@ namespace LeveMe.Data.Migrations
                             Cidade = "Araraquara",
                             DataCadastro = new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Endereco = "Av. Teste",
-                            LeveMvId = new Guid("00000000-0000-0000-0000-000000000000"),
                             Nome = "Jonatas",
                             Telefone = "16999998888",
                             UF = "SP"

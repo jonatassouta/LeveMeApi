@@ -9,7 +9,7 @@ namespace LeveMe.Application.InterfacesServices
 {
     public interface IClienteService
     {
-        Task Cadastar(Cliente cliente);
+        Task<string> Cadastar(Cliente cliente);
         Task Atualizar(Cliente cliente);
         Task<List<Cliente>> Listar();
         Task<List<Cliente>> ListarPorNome(string nome);

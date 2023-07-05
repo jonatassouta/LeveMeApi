@@ -5,13 +5,14 @@
         public Guid ID { get; set; }
         public string Nome { get; set; }
         public long CNPJ { get; set; }
-        public string Endereço { get; set; }
+        public string Endereco { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string UF { get; set; }
         public string Telefone { get; set; }
         public string? Email { get; set; }
-        public bool Ativo { get; set; }          
+        public bool Ativo { get; set; }
+        public Guid LeveMvId { get; set; }
         public DateTime DataCadastro { get; set; }
         public IList<ClienteLeveMv> LeveMe { get; set; }
         public ICollection<Produto> Produtos { get; set; }
@@ -21,12 +22,12 @@
 
         }
 
-        public Cliente(Guid id, string nome, int cnpj, string bairro, string telefone, string endereco, string cidade, string uf, DateTime dataCadastro, bool ativo, string email)
+        public Cliente(Guid id, string nome, int cnpj, string bairro, string telefone, string endereco, string cidade, string uf, DateTime dataCadastro, bool ativo, string email, Guid leveID)
         { 
             ID = id;
             Nome = nome;
             CNPJ = cnpj;
-            Endereço = endereco;
+            Endereco = endereco;
             Bairro = bairro;
             Cidade = cidade;
             UF = uf;
@@ -34,6 +35,7 @@
             Email = email;
             DataCadastro = dataCadastro;
             Ativo = ativo;
+            LeveMvId = leveID;
         }
     }
 }
