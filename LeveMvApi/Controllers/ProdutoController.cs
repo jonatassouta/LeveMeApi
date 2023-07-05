@@ -70,5 +70,13 @@ namespace LeveMeApi.Controllers
             await _produtoService.Excluir(id);
             return "Exclusão efetuada com sucesso!";
         }
+
+        [HttpPut]
+        [Route("vender/{id},{quantidade}")]
+        public async Task<string> Vender(Guid id, int quantidade)
+        {
+            var msg = await _produtoService.Vender(id, quantidade);
+            return msg;
+        }
     }
 }

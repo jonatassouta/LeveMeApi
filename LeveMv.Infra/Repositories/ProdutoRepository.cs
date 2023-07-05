@@ -68,5 +68,23 @@ namespace LeveMe.Data.Repositories
         {
             return await _context.Produtos.Where(l => l.Nome.StartsWith(nome)).ToListAsync();
         }
+
+        public async Task<string> Vender(Guid produtoId, int quantidade)
+        {
+            var produto = await PesquisarPoId(produtoId);
+
+            if (produto.Quantidade >= quantidade)
+            {
+                produto.Quantidade = produto.Quantidade - quantidade;
+                await Atualizar(produto);
+
+                return "Estoque Atualizado!";
+            }
+            else
+            {
+                return "A quantidade tem que ser menor ou igual ao estoque do produto!";
+            }
+            
+        }
     }
 }

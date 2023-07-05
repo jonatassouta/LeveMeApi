@@ -103,5 +103,18 @@ namespace LeveMe.Application.Services
                 throw ex;
             }
         }
+
+        public async Task<string> Vender(Guid produtoId, int quantidade)
+        {
+            try
+            {
+                return await _iProdutoRepositories.Vender(produtoId, quantidade);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
