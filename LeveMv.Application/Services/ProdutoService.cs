@@ -78,11 +78,11 @@ namespace LeveMe.Application.Services
             }
         }
 
-        public async Task<List<Produto>> ListarPorCliente()
+        public async Task<List<Produto>> ListarPorCliente(Guid id, string? number)
         {
             try
             {
-                return await _iProdutoRepositories.ListarPorCliente();
+                return await _iProdutoRepositories.ListarPorCliente(id, number);
             }
             catch (Exception ex)
             {

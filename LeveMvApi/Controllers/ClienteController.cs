@@ -36,7 +36,7 @@ namespace LeveMeApi.Controllers
         public async Task<string> Cadastrar([FromBody] ClienteDto cliente)
         {
             var entidade = cliente.ConverterParaEntidade();
-            var msg = await _clienteService.Cadastar(entidade);
+            string msg = await _clienteService.Cadastar(entidade);
             return msg;
         }
 

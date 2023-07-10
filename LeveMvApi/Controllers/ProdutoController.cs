@@ -40,10 +40,10 @@ namespace LeveMeApi.Controllers
         }
 
         [HttpGet]
-        [Route("listar-cliente")]
-        public async Task<List<Produto>> ListarPorCliente()
+        [Route("listar-cliente/{id},{number}")]
+        public async Task<List<Produto>> ListarPorCliente(Guid id, string? number)
         {
-            return await _produtoService.ListarPorCliente();
+            return await _produtoService.ListarPorCliente(id, number);
         }
 
         [HttpGet]

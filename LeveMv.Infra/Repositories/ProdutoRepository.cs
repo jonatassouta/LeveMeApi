@@ -2,6 +2,7 @@
 using LeveMv.Data.Context;
 using LeveMv.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace LeveMe.Data.Repositories
 {
@@ -49,11 +50,18 @@ namespace LeveMe.Data.Repositories
             return await _context.Produtos.ToListAsync();
         }
 
-        public async Task<List<Produto>> ListarPorCliente()
+        public async Task<List<Produto>> ListarPorCliente(Guid id, string? number)
         {
-            var result = await _context.Produtos
-                .Include(c => c.Cliente)
-                .ThenInclude(cc => cc.Produtos)
+            if (number == "2")
+            {
+                return await _context.Produtos.Where(c => c.ClienteId == id && c.Quantidade == 0).ToListAsync(); ;
+            }
+            else if (number == "3")
+            {
+                return await _context.Produtos.Where(c => c.ClienteId == id && c.Quantidade > 0).ToListAsync(); ;
+            }
+
+            var result = await _context.Produtos.Where(c => c.ClienteId == id)
                 .ToListAsync();
 
             return result;
@@ -61,7 +69,7 @@ namespace LeveMe.Data.Repositories
 
         public async Task<Produto> PesquisarPoId(Guid produtoId)
         {
-             return await _context.Produtos.FirstOrDefaultAsync(x => x.ID.Equals(produtoId));
+            return await _context.Produtos.FirstOrDefaultAsync(x => x.ID.Equals(produtoId));
         }
 
         public async Task<List<Produto>> ListarPorNome(string nome)
@@ -84,7 +92,7 @@ namespace LeveMe.Data.Repositories
             {
                 return "A quantidade tem que ser menor ou igual ao estoque do produto!";
             }
-            
+
         }
     }
 }

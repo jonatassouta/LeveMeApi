@@ -9,7 +9,7 @@ namespace LeveMe.Application.InterfacesServices
         Task<string> Vender(Guid produtoId, int quantidade);
         Task<List<Produto>> Listar();
         Task<List<Produto>> ListarPorNome(string nome);
-        Task<List<Produto>> ListarPorCliente();
+        Task<List<Produto>> ListarPorCliente(Guid id, string? number);
         Task Excluir(Guid produtoId);
         Task<Produto> PesquisarPoId(Guid produtoId);
     }

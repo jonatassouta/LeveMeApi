@@ -1,4 +1,5 @@
-﻿using LeveMv.Data.Mappings;
+﻿using LeveMe.Domain.Enums;
+using LeveMv.Data.Mappings;
 using LeveMv.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,7 +31,7 @@ namespace LeveMv.Data.Context
         protected void InitializeData(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>().HasData(
-                new Cliente { ID = new Guid("6714d050-cbad-4951-b819-3641e4647f1c") , Nome = "Jonatas", CNPJ = 11122233345678, Telefone = "16999998888", Endereco = "Av. Teste", Bairro = "Vila Xavier", Cidade = "Araraquara", UF = "SP", DataCadastro = DateTime.Parse("16/05/2025"), Ativo = true });
+                new Cliente { ID = new Guid("6714d050-cbad-4951-b819-3641e4647f1c") , Nome = "Jonatas", CNPJ = 11122233345678, Telefone = "16999998888", Endereco = "Av. Teste", Bairro = "Vila Xavier", Cidade = "Araraquara", UF = "SP", DataCadastro = DateTime.Parse("16/05/2025"), Ativo = true, Perfil = PerfilUsuarioEnum.Perfil.Admin.ToString(), Senha = "123456" });
 
             modelBuilder.Entity<Levemv>().HasData(
                 new Levemv { ID = new Guid("fa974954-c32d-4e62-9154-c77d14445525"), Nome = "Leve Me Tipo 1"});

@@ -43,7 +43,15 @@ namespace LeveMv.Data.Mappings
                 .IsRequired();
 
             builder.Property(p => p.Email)
-                .HasColumnType("varchar(40)");          
+                .HasColumnType("varchar(40)");
+
+            builder.Property(p => p.Senha)
+                .HasColumnType("varchar(8)")
+                .IsRequired();
+
+            builder.Property(p => p.Perfil)
+                .HasColumnType("varchar(8)")
+                .IsRequired();
 
             builder.Property(p => p.Ativo)
                 .HasColumnType("bit")

@@ -27,6 +27,7 @@ namespace LeveMe.Data.Repositories
                 atualizado.Telefone = cliente.Telefone;
                 atualizado.Email = atualizado.Email;
                 atualizado.Ativo = true;
+                atualizado.LeveMvId = cliente.LeveMvId;
 
                 _context.Clientes.Update(atualizado);
                 await _context.SaveChangesAsync();
