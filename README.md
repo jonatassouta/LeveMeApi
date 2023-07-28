@@ -6,7 +6,7 @@ A API possui um endpoit para autenticação do usuário (login), que recebe os d
 
 Este projeto possui endpoints para manipulação de Clientes/Lojas, permitindo listar todas a lojas, listagem por nome, cadastrar, listar por ID, atualizar os dados das lojas existentes e deletar.
 
-Também possui endpoints para realizar as operações de CRUD dos tipos de Leve me: operações estás de listagem de todos os tipos de "leve me", cadastro, listagem  de leve me por cliente, listagem por ID, listagem por nome, atualizar e deletar o tipo existente.
+Também possui endpoints para realizar as operações de CRUD dos tipos de Leve me: operações estás de listagem de todos os tipos de "leve me", cadastro, listagem  de leve me por cliente, listagem por ID, listagem por nome, atualizar e deletar os tipos existente.
 
 Possui CRUD de produtos também que permite: A listagem de todos os produtos, a listagem por nome, o cadastro de um novo produto, a listagem por lojas, a listagem por ID, atualização e remoção do mesmo, e um controle de vendas do produto.
 
