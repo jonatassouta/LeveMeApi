@@ -4,7 +4,7 @@ Este é um projeto em C#, consiste em uma API de cadastro e gestão de estoque. 
 
 A API possui um endpoit para autenticação do usuário (login), que recebe os dados de usuário e verifica sua existência no banco de dados, se consistente as informações, realiza a geração de um token de acesso com tempo de expiação na qual será usado para acessar dos demais endpoints da API
 
-Este projeto possui endpoints para manipulação de Cliente/Lojas, permitindo listar todas a lojas, listagem por nome, cadastrar, listar por ID, atualizar os dados das lojas existentes e deletar.
+Este projeto possui endpoints para manipulação de Clientes/Lojas, permitindo listar todas a lojas, listagem por nome, cadastrar, listar por ID, atualizar os dados das lojas existentes e deletar.
 
 Também possui endpoints para realizar as operações de CRUD dos tipos de Leve me: listagem, cadastro, listagem por cliente, listagem por ID, listagem por nome, atualizar e deletar o tipo de leve me existente.
 
