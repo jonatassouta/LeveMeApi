@@ -22,3 +22,7 @@ Para executar o projeto, siga as seguintes etapas:
 4. No Console do Gerenciador de Pacotes, execute o comando ```Update-Database``` para criar o banco de dados e suas tabelas.
 5. Compile o projeto e execute a aplicação.
 6. Use o Swagger ou outra ferramenta similar para testar os endpoints da API.
+
+# Conclusão
+
+A API de cadastro e gestão de estoque é uma solução eficiente na gestão de vendas, estoques de produtos e na gestão de clientes cadastrado, além das operações de CRUD oferece um sistema eficiente de segurança através da autenticação por token, o que restringe os acessos a API e em determinados endpoints os acesso se restringe também ao perfil do usuário logado. Além disso, há saídas em formato JSON padronizadas.
