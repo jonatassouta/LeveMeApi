@@ -18,7 +18,7 @@ Endpoints
 Para executar o projeto, siga as seguintes etapas:
 1. Clone este repositório em sua máquina local usando o comando git clone ```https://github.com/jonatassouta/LeveMeApi.git```
 2. Abra o projeto no Visual Studio ou em outra IDE de sua preferência.
-3. Configure a string de conexão do banco de dados no arquivo appsettings.json.
-4. No Console do Gerenciador de Pacotes, execute o comando Update-Database para criar o banco de dados e suas tabelas.
+3. Configure a string de conexão do banco de dados no arquivo ```appsettings.json``` dentro da pasta ```LeveMvAPi```.
+4. No Console do Gerenciador de Pacotes, execute o comando ```Update-Database``` para criar o banco de dados e suas tabelas.
 5. Compile o projeto e execute a aplicação.
 6. Use o Swagger ou outra ferramenta similar para testar os endpoints da API.
