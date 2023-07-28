@@ -13,6 +13,12 @@ Possui CRUD de produtos que permite: A listagem de todos os produtos, a listagem
 # Demonstração
 Endpoints
 
+![API endpoints](https://github.com/jonatassouta/LeveMeApi/assets/44308032/7a032a8c-3dd7-4c6c-8a2a-8fae1ee725d3)
+
+Demonstração da geração do token de autenticação
+
+https://github.com/jonatassouta/LeveMeApi/assets/44308032/59f1d7e7-6e4f-4e74-a43c-a6e3f487208f
+
 # Como executar o projeto
 
 Para executar o projeto, siga as seguintes etapas:
