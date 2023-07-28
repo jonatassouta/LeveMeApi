@@ -8,7 +8,7 @@ Este projeto possui endpoints para manipulação de Clientes/Lojas, permitindo l
 
 Também possui endpoints para realizar as operações de CRUD dos "tipos de Leve me" operações estás de: listagem de todos "leve mes" cadastrado, cadastro, listagem por cliente, listagem por ID, listagem por nome, atualizar e deletar os tipos existente.
 
-Possui CRUD de produtos também que permite: A listagem de todos os produtos, a listagem por nome, o cadastro de um novo produto, a listagem por lojas, a listagem por ID, atualização e remoção do mesmo, e um controle de vendas do produto.
+Possui CRUD de produtos que permite: A listagem de todos os produtos, a listagem por nome, o cadastro de um novo produto, a listagem por lojas, a listagem por ID, atualização e remoção do mesmo, e um controle de vendas do produto.
 
 # Demonstração
 Endpoints
