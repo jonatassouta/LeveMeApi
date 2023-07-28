@@ -33,4 +33,6 @@ Para executar o projeto, siga as seguintes etapas:
 
 ## ✒ Conclusão
 
-A API de cadastro e gestão de estoque é uma solução eficiente na gestão de vendas, estoques de produtos e na gestão de clientes cadastrado, além das operações de CRUD oferece um sistema eficiente de segurança através da autenticação por token, o que restringe os acessos a API e em determinados endpoints os acesso se restringe também ao perfil do usuário logado. Além disso, há saídas em formato JSON padronizadas.
+A API de cadastro e gestão de estoque é uma solução eficiente na gestão de vendas, estoques de produtos e na gestão de clientes cadastrado, além das operações de CRUD oferece um sistema eficiente de segurança através da autenticação por token, o que restringe os acessos a API e em determinados endpoints os acesso se restringe também ao perfil do usuário logado. Além disso, há saídas em formato JSON padronizadas. Este projeto foi um desafio e que esta me empolgando muito desenvolvê-lo, continua em desenvolvimento e terá novas funcionalidades em breve. 
+
+Criticas, sugestões e feedbacks são bem vindos.
