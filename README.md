@@ -11,3 +11,4 @@ Também possui endpoints para realizar as operações de CRUD dos "tipos de Leve
 Possui CRUD de produtos também que permite: A listagem de todos os produtos, a listagem por nome, o cadastro de um novo produto, a listagem por lojas, a listagem por ID, atualização e remoção do mesmo, e um controle de vendas do produto.
 
 # Demonstração
+Endpoints
