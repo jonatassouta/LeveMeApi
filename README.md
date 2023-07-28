@@ -21,7 +21,7 @@ Para executar o projeto, siga as seguintes etapas:
 3. Configure a string de conexão do banco de dados no arquivo ```appsettings.json``` dentro da pasta ```LeveMvAPi```.
 4. No Console do Gerenciador de Pacotes, execute o comando ```Update-Database``` para criar o banco de dados e suas tabelas.
 5. Compile o projeto e execute a aplicação.
-6. Use o Swagger ou outra ferramenta similar para testar os endpoints da API.
+6.  Use o Swagger ou outra ferramenta similar para testar os endpoints da API, ou se preferir pode executá-lo em conjunto com o front-end da aplicação, ```https://github.com/jonatassouta/LeveMvApp``` os comandos para a execução do mesmo estão descritos na página.
 
 # Conclusão
 
