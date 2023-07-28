@@ -2,7 +2,7 @@
 
 Este é um projeto em C#, consiste em uma API de cadastro e gestão de estoque. A API utiliza o framework ASP.NET Core e banco de dados Microsoft SQL Serve.
 
-A API possui um endpoit para autenticação do usuário (login), que recebe os dados de usuário e verifica sua existência no banco de dados, se consistente as informações, realiza a geração de um token de acesso com tempo de expiação na qual será usado para acessar dos demais endpoints da API
+A API possui um endpoit para autenticação do usuário (login), que recebe os dados de usuário e verifica sua existência no banco de dados, se consistente as informações, realiza a geração de um token de acesso com tempo de expiração na qual será usado para acessar dos demais endpoints da API
 
 Este projeto possui endpoints para manipulação de Clientes/Lojas, permitindo listar todas a lojas, listagem por nome, cadastrar, listar por ID, atualizar os dados das lojas existentes e deletar.
 
