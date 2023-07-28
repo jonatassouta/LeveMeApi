@@ -10,7 +10,7 @@ Também possui endpoints para realizar as operações de CRUD dos "tipos de Leve
 
 Possui CRUD de produtos que permite: A listagem de todos os produtos, a listagem por nome, o cadastro de um novo produto, a listagem por lojas, a listagem por ID, atualização e remoção do mesmo, e um controle de vendas do produto.
 
-# Demonstração
+# 🏗 Demonstração
 Endpoints
 
 ![API endpoints](https://github.com/jonatassouta/LeveMeApi/assets/44308032/7a032a8c-3dd7-4c6c-8a2a-8fae1ee725d3)
@@ -19,7 +19,7 @@ Demonstração da geração do token de autenticação
 
 https://github.com/jonatassouta/LeveMeApi/assets/44308032/59f1d7e7-6e4f-4e74-a43c-a6e3f487208f
 
-# Como executar o projeto
+# 🔧 Como executar o projeto
 
 Para executar o projeto, siga as seguintes etapas:
 1. Clone este repositório em sua máquina local usando o comando git clone ```https://github.com/jonatassouta/LeveMeApi.git```
@@ -29,6 +29,6 @@ Para executar o projeto, siga as seguintes etapas:
 5. Compile o projeto e execute a aplicação.
 6.  Use o Swagger ou outra ferramenta similar para testar os endpoints da API, ou se preferir pode executá-lo em conjunto com o front-end da aplicação, ```https://github.com/jonatassouta/LeveMvApp``` os comandos para a execução do mesmo estão descritos na página.
 
-# Conclusão
+# ✒ Conclusão
 
 A API de cadastro e gestão de estoque é uma solução eficiente na gestão de vendas, estoques de produtos e na gestão de clientes cadastrado, além das operações de CRUD oferece um sistema eficiente de segurança através da autenticação por token, o que restringe os acessos a API e em determinados endpoints os acesso se restringe também ao perfil do usuário logado. Além disso, há saídas em formato JSON padronizadas.
