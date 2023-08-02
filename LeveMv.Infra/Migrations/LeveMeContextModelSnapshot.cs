@@ -93,8 +93,24 @@ namespace LeveMe.Data.Migrations
                             Endereco = "Av. Teste",
                             LeveMvId = new Guid("00000000-0000-0000-0000-000000000000"),
                             Nome = "Jonatas",
-                            Perfil = "Admin",
+                            Perfil = "Manager",
                             Senha = "123456",
+                            Telefone = "16999998888",
+                            UF = "SP"
+                        },
+                        new
+                        {
+                            ID = new Guid("098082a8-6b8c-491c-a0bd-d3a586d2b6c7"),
+                            Ativo = true,
+                            Bairro = "Vila Xavier",
+                            CNPJ = 45612378963544m,
+                            Cidade = "Araraquara",
+                            DataCadastro = new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Endereco = "Av. Teste",
+                            LeveMvId = new Guid("00000000-0000-0000-0000-000000000000"),
+                            Nome = "teste",
+                            Perfil = "Cliente",
+                            Senha = "teste",
                             Telefone = "16999998888",
                             UF = "SP"
                         });
@@ -176,7 +192,15 @@ namespace LeveMe.Data.Migrations
                             ClienteId = new Guid("6714d050-cbad-4951-b819-3641e4647f1c"),
                             Nome = "Cabo Tipo C",
                             Preco = 22.5m,
-                            Quantidade = 0
+                            Quantidade = 12
+                        },
+                        new
+                        {
+                            ID = new Guid("c9939d1c-dbd8-4215-9bb7-5ef4e17b9743"),
+                            ClienteId = new Guid("098082a8-6b8c-491c-a0bd-d3a586d2b6c7"),
+                            Nome = "Cabo Grosso",
+                            Preco = 10.5m,
+                            Quantidade = 8
                         });
                 });
 

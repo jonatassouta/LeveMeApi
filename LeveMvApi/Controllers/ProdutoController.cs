@@ -1,12 +1,14 @@
 ﻿using LeveMe.Application.InterfacesServices;
 using LeveMe.Application.ViewModels;
 using LeveMv.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeveMeApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ProdutoController : ControllerBase
     {
         private readonly IProdutoService _produtoService;
@@ -65,6 +67,7 @@ namespace LeveMeApi.Controllers
 
         [HttpDelete]
         [Route("deletar/{id}")]
+        [Authorize("Manager")]
         public async Task<string> Deletar(Guid id)
         {
             await _produtoService.Excluir(id);
@@ -73,6 +76,7 @@ namespace LeveMeApi.Controllers
 
         [HttpPut]
         [Route("vender/{id},{quantidade}")]
+        [Authorize("Cliente")]
         public async Task<string> Vender(Guid id, int quantidade)
         {
             var msg = await _produtoService.Vender(id, quantidade);

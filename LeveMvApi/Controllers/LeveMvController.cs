@@ -2,12 +2,14 @@
 using LeveMv.Application.Services;
 using LeveMv.Application.ViewModels;
 using LeveMv.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeveMvApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [AllowAnonymous]
     public class LeveMvController : ControllerBase
     {
         private readonly ILeveMeService _leveMvService;

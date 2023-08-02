@@ -2,7 +2,8 @@
 
 namespace LeveMe.Application.InterfacesServices
 {
-    public interface Get
+    public interface IUserService
     {
+        public Cliente Get(string username, string password);
     }
 }

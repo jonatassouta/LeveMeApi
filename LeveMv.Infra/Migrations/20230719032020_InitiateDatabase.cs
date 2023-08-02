@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LeveMe.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class CriacaoBanco : Migration
+    public partial class InitiateDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,15 +17,18 @@ namespace LeveMe.Data.Migrations
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
-                    CNPJ = table.Column<decimal>(type: "numeric(14,0)", nullable: false),
-                    Endereço = table.Column<string>(type: "varchar(100)", nullable: false),
+                    CNPJ = table.Column<decimal>(type: "numeric(14,0)", precision: 14, scale: 0, nullable: false),
+                    Endereco = table.Column<string>(type: "varchar(100)", nullable: false),
                     Bairro = table.Column<string>(type: "varchar(20)", nullable: false),
                     Cidade = table.Column<string>(type: "varchar(20)", nullable: false),
-                    UF = table.Column<string>(type: "varchar(2)", nullable: false),
+                    UF = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false),
                     Telefone = table.Column<string>(type: "varchar(12)", nullable: false),
                     Email = table.Column<string>(type: "varchar(40)", nullable: true),
+                    Senha = table.Column<string>(type: "varchar(8)", nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
-                    DataCadastro = table.Column<DateTime>(type: "datetime", nullable: false)
+                    LeveMvId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DataCadastro = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Perfil = table.Column<string>(type: "varchar(8)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,7 +36,7 @@ namespace LeveMe.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LeveMe",
+                name: "LeveMv",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -41,7 +44,7 @@ namespace LeveMe.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LeveMe", x => x.ID);
+                    table.PrimaryKey("PK_LeveMv", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,42 +69,42 @@ namespace LeveMe.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientesleveMe",
+                name: "ClienteleveMv",
                 columns: table => new
                 {
                     ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LeveMeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LeveMvId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientesleveMe", x => new { x.ClienteId, x.LeveMeId });
+                    table.PrimaryKey("PK_ClienteleveMv", x => new { x.ClienteId, x.LeveMvId });
                     table.ForeignKey(
-                        name: "FK_ClientesleveMe_Clientes_ClienteId",
+                        name: "FK_ClienteleveMv_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClientesleveMe_LeveMe_LeveMeId",
-                        column: x => x.LeveMeId,
-                        principalTable: "LeveMe",
+                        name: "FK_ClienteleveMv_LeveMv_LeveMvId",
+                        column: x => x.LeveMvId,
+                        principalTable: "LeveMv",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Clientes",
-                columns: new[] { "ID", "Ativo", "Bairro", "CNPJ", "Cidade", "DataCadastro", "Email", "Endereço", "Nome", "Telefone", "UF" },
-                values: new object[] { new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), true, "Vila Xavier", 11122233345678m, "Araraquara", new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Av. Teste", "Jonatas", "16999998888", "SP" });
+                columns: new[] { "ID", "Ativo", "Bairro", "CNPJ", "Cidade", "DataCadastro", "Email", "Endereco", "LeveMvId", "Nome", "Perfil", "Senha", "Telefone", "UF" },
+                values: new object[] { new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), true, "Vila Xavier", 11122233345678m, "Araraquara", new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Av. Teste", new Guid("00000000-0000-0000-0000-000000000000"), "Jonatas", "Admin", "123456", "16999998888", "SP" });
 
             migrationBuilder.InsertData(
-                table: "LeveMe",
+                table: "LeveMv",
                 columns: new[] { "ID", "Nome" },
                 values: new object[] { new Guid("fa974954-c32d-4e62-9154-c77d14445525"), "Leve Me Tipo 1" });
 
             migrationBuilder.InsertData(
-                table: "ClientesleveMe",
-                columns: new[] { "ClienteId", "LeveMeId" },
+                table: "ClienteleveMv",
+                columns: new[] { "ClienteId", "LeveMvId" },
                 values: new object[] { new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), new Guid("fa974954-c32d-4e62-9154-c77d14445525") });
 
             migrationBuilder.InsertData(
@@ -110,9 +113,9 @@ namespace LeveMe.Data.Migrations
                 values: new object[] { new Guid("afc849df-735d-48ec-8e20-61aa2e434cff"), new Guid("6714d050-cbad-4951-b819-3641e4647f1c"), "Cabo Tipo C", 22.5m, 0 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientesleveMe_LeveMeId",
-                table: "ClientesleveMe",
-                column: "LeveMeId");
+                name: "IX_ClienteleveMv_LeveMvId",
+                table: "ClienteleveMv",
+                column: "LeveMvId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_ClienteId",
@@ -124,13 +127,13 @@ namespace LeveMe.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ClientesleveMe");
+                name: "ClienteleveMv");
 
             migrationBuilder.DropTable(
                 name: "Produtos");
 
             migrationBuilder.DropTable(
-                name: "LeveMe");
+                name: "LeveMv");
 
             migrationBuilder.DropTable(
                 name: "Clientes");

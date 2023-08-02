@@ -1,15 +1,22 @@
-﻿using LeveMe.Domain.Models;
+﻿using LeveMe.Domain.InterfacesRepositories;
+using LeveMv.Data.Context;
+using LeveMv.Domain.Models;
 
 namespace LeveMe.Data.Repositories
 {
-    public static class UserRepository
+    public class UserRepository : IUserRepository
     {
-        public static User Get(string username, string password)
+        private readonly LeveMeContext _context;
+        public UserRepository(LeveMeContext context)
         {
-            var users = new List<User>();
-            users.Add(new User { Id = 1, UserName = "Jonatas", Password = "jonatas", Role = "manager"});
-            users.Add(new User { Id = 2, UserName = "teste", Password = "teste", Role = "cliente" });
-            return users.Where( x => x.UserName.ToLower() == username.ToLower() && x.Password == password).FirstOrDefault();
+            _context = context;
+        }
+
+        public Cliente Get(string username, string password)
+        {
+            var users = _context.Clientes.Where(x => x.Nome.ToLower() == username.ToLower() && x.Senha == password).FirstOrDefault();
+            
+            return users;
         }
     }
 }

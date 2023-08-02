@@ -2,6 +2,7 @@
 using LeveMv.Data.Context;
 using LeveMv.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Reflection.Metadata.Ecma335;
 
 namespace LeveMe.Data.Repositories
@@ -80,17 +81,22 @@ namespace LeveMe.Data.Repositories
         public async Task<string> Vender(Guid produtoId, int quantidade)
         {
             var produto = await PesquisarPoId(produtoId);
+            var msg = "";
 
             if (produto.Quantidade >= quantidade)
             {
                 produto.Quantidade = produto.Quantidade - quantidade;
                 await Atualizar(produto);
 
-                return "Estoque Atualizado!";
+                msg = "Estoque Atualizado!";
+                msg = JsonConvert.SerializeObject(msg);
+                return msg;
             }
             else
             {
-                return "A quantidade tem que ser menor ou igual ao estoque do produto!";
+                msg = "A quantidade tem que ser menor ou igual ao estoque do produto!";
+                msg = JsonConvert.SerializeObject(msg);
+                return msg;
             }
 
         }

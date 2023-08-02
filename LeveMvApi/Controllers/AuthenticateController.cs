@@ -1,4 +1,5 @@
-﻿using LeveMe.Application.Services;
+﻿using LeveMe.Application.InterfacesServices;
+using LeveMe.Application.Services;
 using LeveMe.Application.ViewModels;
 using LeveMe.Data.Repositories;
 using LeveMe.Domain.Models;
@@ -10,43 +11,36 @@ namespace LeveMeApi.Controllers
     [Route("api/account")]
     public class AuthenticateController : ControllerBase
     {
+        private readonly IUserService _userService;
+
+        public AuthenticateController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> Authenticate([FromBody]UserDto model)
         {
-            var user = UserRepository.Get(model.UserName, model.Password);
+            var user = _userService.Get(model.UserName, model.Password);
 
             if (user == null)
                 return NotFound(new { message = "Usuário ou senha inválidos" });
 
             var token = TokenService.GenerateToken(user);
-            user.Password = "";
+            user.Senha = "";
+
+            var userDto = new UserDto();
+            userDto.Id = user.ID;
+            userDto.UserName = user.Nome;
+            userDto.Role = user.Perfil;
+
             return new 
             {
-                user = user,
+                user = userDto,
                 token = token
             };
         }
-
-        [HttpGet]
-        [Route("anonymous")]
-        [AllowAnonymous]
-        public string Anonymous() => "Anonimo";
-
-        [HttpGet]
-        [Route("authenticated")]
-        [Authorize]
-        public string Authenticated() => String.Format("Autencicado");
-
-        [HttpGet]
-        [Route("cliente")]
-        [Authorize(Roles = "cliente")]
-        public string Cliente() => "cliente";
-
-        [HttpGet]
-        [Route("manager")]
-        [Authorize(Roles = "manager")]
-        public string Manager() => "manager";
     }
 }

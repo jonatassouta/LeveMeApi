@@ -10,7 +10,7 @@ namespace LeveMe.Domain.Enums
     {
         public enum Perfil
         {
-            Admin,
+            Manager,
             Cliente
         }
     }
